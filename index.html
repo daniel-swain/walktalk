@@ -17,13 +17,23 @@
   <script>
     window.addEventListener('load', Game.start);
   </script>
+  <style type="text/css" media="screen">
+   body {
+     text-align: center;
+   }
+   #cr-stage { margin: 20px auto 0; }
+ </style>
 </head>
 <body>
   <div class="container">
     <div class="jumbotron">
       <h1> Walk Talk</h1>
       <p>As your character walks, you continue to talk!</p>
+    </div>
   </div>
+
+  <div class="container">
+    <div id="cr-stage"></div>
   </div>
 <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
 </body>

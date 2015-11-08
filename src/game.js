@@ -1,7 +1,7 @@
 Game = {
   map_grid: {
-    width: 16,
-    height: 16,
+    width: 32,
+    height: 24,
     tile: {
         width: 16,
         height: 16
@@ -20,6 +20,6 @@ Game = {
     Crafty.init(Game.width(), Game.height());
     Crafty.background('rgb(161, 193, 246)');
 
-    
+    Crafty.scene('Loading');
   }
 };
