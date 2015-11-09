@@ -29,12 +29,13 @@ Crafty.scene('MainMenu', function() {
   // Main Title
   Crafty.e('GameText')
     .text('WalkTalk')
-    .attr({ x: 0, y: Game.height()/3, w: Game.width()});
+    .attr({ x: Game.width()/2.5, y: Game.height()/3});
   // Start Button
   Crafty.e('MenuOption')
     .text('Start Game')
-    .attr({h: 28, w: 11.5 * ppc, x: Game.width()/3 , y: Game.width()/3});
-
-}, function() {
+    .attr({h: 28, w: 11.5 * ppc, x: Game.width()/3 , y: Game.height()/2})
+    .bind('Click', function(MouseEvent) {
+      Crafty.scene('Game');
+    });
 
 });

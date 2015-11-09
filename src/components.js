@@ -63,7 +63,7 @@ Crafty.c("GameText", {
 // --- Buttons ---
 Crafty.c("Button", {
   init: function() {
-    this.requires('DOM, 2D, Hoverable, Grid');
+    this.requires('2D, DOM, Hoverable, Grid');
     this.css({
       'border' : '2px solid rgb(190, 190, 190)',
       'text-align' : 'center'
@@ -74,7 +74,6 @@ Crafty.c("Button", {
 Crafty.c("MenuOption", {
   init: function() {
       this.requires('Button, GameText');
-      this.attr({ x: 100, y: 100 });
   }
 });
 
