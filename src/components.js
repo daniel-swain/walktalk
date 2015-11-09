@@ -40,12 +40,21 @@ Crafty.c('Hoverable', {
 Crafty.c('Actor', {
   init: function() {
     this.requires('2D, Canvas, Grid');
-  }
+  },
+
+
+    stopMovement: function() {
+      this._speed = 0;
+      if (this._movement) {
+        this.x -= this._movement.x;
+        this.y -= this._movement.y;
+      }
+    }
 });
 
 Crafty.c('Decoration', {
   init: function() {
-    this.requires('Actor, Solid');
+    this.requires('2D, Canvas, Grid');
   }
 });
 // -----------------------------
@@ -83,13 +92,23 @@ Crafty.c("MenuOption", {
 // --- Characters ---
 Crafty.c('PlayerCharacter', {
   init: function() {
-    this.requires('Actor');
+    this.requires('Actor, Color, Collision, Gravity');
+    this.color('white');
+    this.attr({ w: Game.map_grid.tile.width * 2, h: Game.map_grid.tile.height * 2 });
+    this.stopOnSolids();
+    this.gravity('Floor');
+  },
+
+  stopOnSolids: function() {
+    this.onHit('Solid', this.stopMovement);
+    return this;
   }
 });
 
 Crafty.c('NonPlayerCharacter', {
   init: function() {
-    this.requires('Actor');
+    this.requires('Actor, Color');
+    this.color('black');
   }
 });
 // -----------------------------
@@ -103,7 +122,9 @@ Crafty.c('Door', {
 
 Crafty.c('Floor', {
   init: function() {
-
+    this.requires('Decoration, Color, Solid');
+    this.color('black');
+    this.attr({ h: Game.map_grid.tile.height, w: Game.map_grid.tile.width });
   }
 });
 
