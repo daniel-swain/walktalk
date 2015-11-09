@@ -91,7 +91,7 @@ Crafty.c('PlayerCharacter', {
 Crafty.c('NonPlayerCharacter', {
   init: function() {
     this.requires('Actor, Color');
-    this.color('rgb(175, 175, 175)');
+    this.color('rgb(175, 175, 0)');
     this.attr({ w: Game.map_grid.tile.width * 2, h: Game.map_grid.tile.height * 2 });
   }
 });

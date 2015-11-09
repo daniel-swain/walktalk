@@ -28,8 +28,8 @@ function generateSegment() {
 
   var npc = Crafty.e('NonPlayerCharacter')
     .attr({
-      x: Game.map_grid.width - 4 * Game.map_grid.tile.width,
-      y: (Game.map_grid.height-3) * Game.map_grid.tile.height
+      x: (Game.map_grid.width - 4) * Game.map_grid.tile.width,
+      y: (Game.map_grid.height - 3) * Game.map_grid.tile.height
     });
 }
 
