@@ -18,7 +18,7 @@ Game = {
 
   start: function() {
     Crafty.init(Game.width(), Game.height());
-    Crafty.background('rgb(161, 193, 246)');
+    Crafty.background('rgb(83, 83, 83)');
 
     Crafty.scene('Loading');
   }

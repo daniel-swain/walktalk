@@ -18,10 +18,10 @@ Crafty.c('Grid', {
 });
 
 Crafty.c('Hoverable', {
-  _baseColor: 'rgb(89, 121, 191)',
-  _hoverColor: 'rgb(249, 204, 90)',
+  _baseColor: 'rgb(46, 46, 46)',
+  _hoverColor: 'rgb(184, 184, 184)',
   init: function() {
-    this.requires('Color, Mouse');
+    this.requires('Color, Mouse, Text');
     this.color(this._baseColor);
     this.bind("MouseOver", function(e) {
       this._baseColor = this.color();
@@ -48,8 +48,38 @@ Crafty.c('Decoration', {
     this.requires('Actor, Solid');
   }
 });
+// -----------------------------
+
+Crafty.c("GameText", {
+  init: function() {
+    this.requires('2D, DOM, Text');
+    this.textFont({
+      family: 'Consolas',
+      size: '20px'
+    });
+  }
+});
+
+// --- Buttons ---
+Crafty.c("Button", {
+  init: function() {
+    this.requires('DOM, 2D, Hoverable, Grid');
+    this.css({
+      'border' : '2px solid rgb(190, 190, 190)',
+      'text-align' : 'center'
+    });
+  }
+});
+
+Crafty.c("MenuOption", {
+  init: function() {
+      this.requires('Button, GameText');
+      this.attr({ x: 100, y: 100 });
+  }
+});
 
 // -----------------------------
+
 
 // --- Characters ---
 Crafty.c('PlayerCharacter', {
