@@ -39,17 +39,8 @@ Crafty.c('Hoverable', {
 
 Crafty.c('Actor', {
   init: function() {
-    this.requires('2D, Canvas, Grid');
-  },
-
-
-    stopMovement: function() {
-      this._speed = 0;
-      if (this._movement) {
-        this.x -= this._movement.x;
-        this.y -= this._movement.y;
-      }
-    }
+    this.requires('2D, DOM, Grid');
+  }
 });
 
 Crafty.c('Decoration', {
@@ -85,30 +76,23 @@ Crafty.c("MenuOption", {
       this.requires('Button, GameText');
   }
 });
-
 // -----------------------------
 
 
 // --- Characters ---
 Crafty.c('PlayerCharacter', {
   init: function() {
-    this.requires('Actor, Color, Collision, Gravity');
-    this.color('white');
-    this.attr({ w: Game.map_grid.tile.width * 2, h: Game.map_grid.tile.height * 2 });
-    this.stopOnSolids();
-    this.gravity('Floor');
-  },
-
-  stopOnSolids: function() {
-    this.onHit('Solid', this.stopMovement);
-    return this;
+    this.requires('Actor, Color');
+    this.color('rgb(235, 235, 235)');
+    this.attr({ w: Game.map_grid.tile.width * 2, h: Game.map_grid.tile.height * 2});
   }
 });
 
 Crafty.c('NonPlayerCharacter', {
   init: function() {
     this.requires('Actor, Color');
-    this.color('black');
+    this.color('rgb(175, 175, 175)');
+    this.attr({ w: Game.map_grid.tile.width * 2, h: Game.map_grid.tile.height * 2 });
   }
 });
 // -----------------------------

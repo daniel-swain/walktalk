@@ -1,19 +1,36 @@
 Crafty.scene('Game', function() {
-  generateWorld();
+  generateSegment();
 
   var player = Crafty.e('PlayerCharacter')
-    .attr({ x: 0, y: 0});
+    .attr({
+      x: 0,
+      y: (Game.map_grid.height-3) * Game.map_grid.tile.height,
+      dX: 3,
+      dY: 0})
+    .bind('EnterFrame', function(){
+      console.log('MoveRight called.');
+      if( this.x > Game.map_grid.width * Game.map_grid.tile.width) {
+        this.x = 0;
+      }
+      this.x += this.dX;
+    });
 
 }, function() {
 
 });
 
-function generateWorld() {
+function generateSegment() {
   //Generte the Floor
-  for(var i = 0; i < Game.map_grid.width; i++ ) {
+  for (var i = 0; i < Game.map_grid.width; i++ ) {
     Crafty.e("Floor")
       .attr({ x: i * Game.map_grid.tile.width, y: Game.height() - Game.map_grid.tile.height });
   }
+
+  var npc = Crafty.e('NonPlayerCharacter')
+    .attr({
+      x: Game.map_grid.width - 4 * Game.map_grid.tile.width,
+      y: (Game.map_grid.height-3) * Game.map_grid.tile.height
+    });
 }
 
 Crafty.scene('Loading', function() {
